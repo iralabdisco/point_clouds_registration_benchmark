@@ -1,3 +1,4 @@
+# A benchmark for point clouds registration algorithms
 The goal of this project is to develop a benchmark for point clouds registration algorithms. It is composed of the following publicly available datasets:
 - the ETH datasets;
 - the Canadian Planetary Emulation Terrain 3D Mapping datasets;
@@ -6,6 +7,7 @@ The goal of this project is to develop a benchmark for point clouds registration
 
 The benchmark aims at covering all the possible use cases of point clouds registration algorithms in robotics; this will allow a fair and objective comparison between different approaches. We provide a set of scripts to ease the setup of the testing environment and a set of registration problems (with ground truth) that cover the various degrees of initial misalignment and overlap. Before using the benchmark, please use read the corresponding paper and cite it in your work.
 
+## Benchmark structure
 To configure the environment, run the script setup.py. This will download the point clouds, convert them to a common format, and save them in the following directory tree:
 
 - eth
@@ -38,10 +40,10 @@ Each directory corresponds to a daset and contains:
 - a file named `<dataset>_global.txt`.
     
 The `_local.txt` and `_global.txt` files contain the registration problem to solve. They are composed of the following fields:
-- **id** A unique identifier of the registration problem, used by the utilities we provide with the benchmark;
+- **id** A unique identifier of the registration problem;
 - **source name** The file name of the source point cloud;
 - **target name** The file name of the target point cloud;
-- **overlap** The percentage of overlap between the two point clouds, calculated as in section 2.1.
+- **overlap** The percentage of overlap between the two point clouds;
 - **t1..t12** The elements of the 4x4 transformation matrix representing the initial misplacement to apply. The last line is implicit, since for a rototranslation is always the same; therefore, the matrix is
 ```
 | t1 t2  t3  t4  |
@@ -58,3 +60,5 @@ The p2at_met folder contains also two other files, named `planetary_map_{global,
     
 The devel folder contains scripts we used to calculate the overlaps and to generate the `_local.txt` and `_global.txt` files. You should not use them, however we keep it in the repository for documentation purposes.
     
+ ## How to use the benchmark
+TODO
