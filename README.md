@@ -61,4 +61,12 @@ The p2at_met folder contains also two other files, named `planetary_map_{global,
 The devel folder contains scripts we used to calculate the overlaps and to generate the `_local.txt` and `_global.txt` files. You should not use them, however we keep it in the repository for documentation purposes.
     
  ## How to use the benchmark
-TODO
+1. Download or clone this repository.
+2. Execute the script `setup.py` to download and configure the testing environment.
+3. Each folder of the workspace contains a set of `_local.txt` and `_global.txt` files, one for each sequence. The sequences are contained in a subfolder with the same name.
+4. For each `_local.txt` or `_global.txt` file (depending on whether you are testing a local or global registration algorithm) and for each line in the file:
+    1. Load the source and target point clouds.
+    2. Transform the source point cloud with the initial transformation.
+    3. Align the point clouds with the algorithm to test.
+    4. Compare the aligned source point cloud with the original source point cloud, using our metric. You can use either our python script, or our C++ library or even a code developed by yourself, as long as it implements the metric described in the corresponding paper.
+
