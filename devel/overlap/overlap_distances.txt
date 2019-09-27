@@ -6,3 +6,5 @@ planetary p2at_met 0.2
 planetary map 0.2
 
 tum desk 0.1
+
+kaist <all> 0.2
