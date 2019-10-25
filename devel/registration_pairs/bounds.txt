@@ -10,4 +10,9 @@ Kaist
     bounds = [0.5,4,1,35]
     global_bounds = [4,15,45,180]
 
+TUM
+    bounds = [0.05,1.5,1,35]
+    global_bounds = [1.5,15,45,180]
+
+
     
