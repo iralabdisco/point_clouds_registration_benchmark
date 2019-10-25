@@ -1,6 +1,5 @@
-import csv, numpy, random, sys, binascii
-from math import sin
-from math import cos
+import csv, numpy, random, sys, binascii, random
+from math import sin, cos, radians
 from scipy.spatial.transform import Rotation
 
 def load_overlap(path):
@@ -19,10 +18,26 @@ def load_overlap(path):
                         overlaps.append([row[0],target,float(overlap)])
     return overlaps
 
-def random_transform(stx, sty,stz, sr,sp,sy):
-    [roll, pitch, yaw] = numpy.random.normal(0,[sr,sp,sy])
-    trans = numpy.random.normal(0, [stx,sty,stz])  
-    rot = Rotation.from_euler("xyz",[roll, pitch, yaw],True)
+def random_vector(min_magnitude, max_magnitude):
+    [inclination, azimuth] = numpy.random.uniform(0,360,2)
+    radius = numpy.random.uniform(min_magnitude,max_magnitude)
+    x = radius*sin(radians(inclination))*cos(radians(azimuth))
+    y = radius*sin(radians(inclination))*sin(radians(azimuth))
+    z = radius*cos(radians(inclination))
+    vec = [x, y, z]
+    return vec
+
+def random_transform(lower_t, upper_t,lower_angle, upper_angle):
+    # [roll, pitch, yaw] = numpy.random.normal(0,[sr,sp,sy])
+    trans = random_vector(lower_t, upper_t)
+    rot = random_vector(radians(lower_angle), radians(upper_angle))
+    # rot = numpy.random.uniform(lower_angle, upper_angle, 3)
+    # trans = numpy.random.uniform(lower_t,upper_t,3)
+    # trans = trans * [random.choice([1, -1]) for x in range(3)]
+    # trans = numpy.random.normal(0, [stx,sty,stz])  
+    # rot = rot*[random.choice([1, -1]) for x in range(3)]
+    # rot = Rotation.from_euler("xyz",rot,True)
+    rot = Rotation.from_rotvec(rot)
     return trans, rot.as_dcm()
     
 def pair_to_str(pair, tran, rot):
@@ -37,11 +52,14 @@ if __name__ == "__main__":
     out_file_local.write(header)
     out_file_global.write(header)
     overlaps = load_overlap(sys.argv[1]+"_overlap.txt")
-    num_trans_per_type = 10
+    num_trans_per_type = 30
     samples_per_overlap = 10
     num_overlap_classes = 10
-    std_devs = [[0.1,0.1,0.1,10,10,10],[0.5,0.5,0.5,20,20,20],[1,1,1,45,45,45]]
-    std_dev_global = [10,10,10,90,90,90]
+    # std_devs = [[0.1,0.1,0.1,2,2,2],[0.5,0.5,0.5,5,5,5],[1,1,1,15,15,15]]
+    # bounds = [[0,0.3,0,5],[0.3,1,5,10],[1,4,10,35]]
+    bounds = [0.05,1.5,1,35]
+    # std_dev_global = [10,10,10,90,90,90]
+    global_bounds = [1.5,15,45,180]
     overlaps.sort(key=lambda x: x[2])
     overlaps = list(filter(lambda x: x[2]>=0.1 and x[2]<1, overlaps))
     min_overlap = min(overlaps, key=lambda x: x[2])[2]
@@ -61,15 +79,15 @@ if __name__ == "__main__":
                 del sub_overlap[chosen]
             else:
                 picked.append(random.choice([x for y in sub_overlaps for x in y]))
-    max_id = num_trans_per_type*len(picked)*(len(std_devs)+1)-1
+    max_id = (num_trans_per_type+1)*len(picked)-1
     id_len = len(str(max_id))
     id = 0
     for pair in picked:
-        for std_dev in std_devs:
-            for i in range(num_trans_per_type):
-                trans, rot = random_transform(*std_dev)
-                out_file_local.write(str(base_id)+format(id,'0'+str(id_len))+" "+pair_to_str(pair, trans, rot)+"\n")
-                id = id +1
-        trans, rot = random_transform(*std_dev_global)
+        # for bound in bounds:
+        for i in range(num_trans_per_type):
+            trans, rot = random_transform(*bounds)
+            out_file_local.write(str(base_id)+format(id,'0'+str(id_len))+" "+pair_to_str(pair, trans, rot)+"\n")
+            id = id +1
+        trans, rot = random_transform(*global_bounds)
         out_file_global.write(str(base_id)+format(id,'0'+str(id_len))+ " "+pair_to_str(pair, trans, rot)+"\n")
         id = id +1

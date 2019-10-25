@@ -1,0 +1,13 @@
+Planetary
+    bounds = [1,10,3,35]
+    global_bounds = [10,20,45,180]
+
+ETH
+    bounds = [0.2,4,1,35]
+    global_bounds = [4,15,45,180]
+
+Kaist
+    bounds = [0.5,4,1,35]
+    global_bounds = [4,15,45,180]
+
+    

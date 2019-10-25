@@ -19,11 +19,11 @@ base_id = binascii.crc32("planetary_map".encode())
 out_file_local.write(header)
 out_file_global.write(header)
 
-num_trans_per_type = 10
-std_devs = [[0.1,0.1,0.1,10,10,10],[0.5,0.5,0.5,20,20,20],[1,1,1,45,45,45]]
-std_dev_global = [10,10,10,90,90,90]
+num_trans_per_type = 30
+bounds = [1,5,3,35]
+global_bounds = [10,20,45,180]
     
-max_id = num_trans_per_type*len(clouds)*(len(std_devs)+1)-1
+max_id = (num_trans_per_type+1)*len(clouds)-1
 id_len = len(str(max_id))
 id = 0
 for cloud in tqdm.tqdm(clouds):
@@ -31,11 +31,10 @@ for cloud in tqdm.tqdm(clouds):
     ov = overlap_fast.overlap(pcd,box_map,max_dist)
     problem =[cloud, map_name, ov]
 
-    for std_dev in std_devs:
-        for i in range(num_trans_per_type):
-            trans, rot = pair_sampling.random_transform(*std_dev)
-            out_file_local.write(str(base_id)+format(id,'0'+str(id_len))+" "+pair_sampling.pair_to_str(problem, trans, rot)+"\n")
-            id = id +1
-        trans, rot = pair_sampling.random_transform(*std_dev_global)
-        out_file_global.write(str(base_id)+format(id,'0'+str(id_len))+ " "+pair_sampling.pair_to_str(problem, trans, rot)+"\n")
+    for i in range(num_trans_per_type):
+        trans, rot = pair_sampling.random_transform(*bounds)
+        out_file_local.write(str(base_id)+format(id,'0'+str(id_len))+" "+pair_sampling.pair_to_str(problem, trans, rot)+"\n")
         id = id +1
+    trans, rot = pair_sampling.random_transform(*global_bounds)
+    out_file_global.write(str(base_id)+format(id,'0'+str(id_len))+ " "+pair_sampling.pair_to_str(problem, trans, rot)+"\n")
+    id = id +1
