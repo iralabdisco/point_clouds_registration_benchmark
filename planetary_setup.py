@@ -1,4 +1,4 @@
-import os, csv, glob, shutil, requests
+import gdown, os, csv, glob, shutil, requests
 from ftplib import FTP
 from zipfile import ZipFile
 
@@ -35,9 +35,10 @@ def main():
         os.remove(zip_file)
     
     os.chdir("p2at_met")
-    req = requests.get("http://projects.ira.disco.unimib.it/public/pcr_benchmark/box_map.pcd")
-    with open("box_map.pcd", "wb") as archive:
-        archive.write(req.content)
+    gdown.download("https://drive.google.com/uc?id=1marTTFGjlDTb-MLj7pm5zV1u-0IS-xFc", "box_map.pcd", quiet=True)
+    # req = requests.get("http://projects.ira.disco.unimib.it/public/pcr_benchmark/box_map.pcd")
+    # with open("box_map.pcd", "wb") as archive:
+    #     archive.write(req.content)
     os.chdir("..")
 
 
