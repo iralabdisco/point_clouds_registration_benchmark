@@ -13,7 +13,7 @@ with open(sys.argv[1]) as csvfile:
     for row in file_reader:
         source = f"{folder}/{row['source']}"
         target = f"{folder}/{row['target']}"
-        command = [executable, "-r 0.1","-m 10", source,target]
+        command = [executable, "-r 0.2","-m 10", source,target]
         print(command)
         result = subprocess.check_output(command).decode("utf8").split(", ")
         result = [float(x) for x in result]
