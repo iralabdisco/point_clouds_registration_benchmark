@@ -70,3 +70,10 @@ The devel folder contains scripts we used to calculate the overlaps and to gener
     3. Align the point clouds with the algorithm to test.
     4. Compare the aligned source point cloud with the original source point cloud, using our metric. You can use either our python script, or our C++ library or even a code developed by yourself, as long as it implements the metric described in the corresponding paper.
 
+## The `devel` folder
+
+The `devel` folder contains the scripts used to generate the benchmark, the result of the analysis of the ground truth and the overlap between point clouds from the same sequence. It should not be used during the normal usage of the benchmark, but it can be used to document each step of the generation of the benchmark. In particular:
+- `gt_check_analyzer.py` can be used to produce plots of the accuracy of the ground truth of one or multiple sequences. The raw data used to calculate the accuracy of each sequence is available in the `gt_check` folder. 
+Example usage: `python gt_checker_analyzer.py gt_check/apartment_gt_check.dat`
+- `plot_overlap_hist.py` can be used to produce a histogram representing the distribution of the various degree of overlap, as on the correspoding paper. The overlap of each point cloud of a sequence with each other of the same sequence is available in the overlap folder and has been calculated using the `overlap_fast.py` script.
+- `pair_sampling.py` has been used to randomly generate the pairs of point clouds used in the benchmark, as described in the corresponding paper.
