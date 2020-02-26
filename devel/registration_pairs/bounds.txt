@@ -1,5 +1,5 @@
 Planetary
-    bounds = [1,10,3,35]
+    bounds = [0.5,4,1,35]
     global_bounds = [10,20,45,180]
 
 ETH
