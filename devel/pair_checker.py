@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     dataset = sys.argv[1].replace("_local.txt","")
     dataset = dataset.replace("_global.txt","")
-    folder = dataset    
+    folder = sys.argv[2]    
     # folder='p2at_met'
     rot_magnitude = []
 
@@ -50,7 +50,7 @@ if __name__ == "__main__":
             vis.update_geometry()
             vis.poll_events()
             vis.update_renderer()
-            time.sleep(2)
+            time.sleep(1)
             vis.remove_geometry(source)
             vis.remove_geometry(target)
             vis.remove_geometry(moved_source)

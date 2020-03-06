@@ -62,7 +62,7 @@ def generate_transformation(centroid, rot, tran):
     centroid_trans = numpy.eye(4, 4)
     centroid_trans[:3, 3] = -centroid
     trans_matrix = numpy.eye(4, 4)
-    trans_matrix[:3, 3] = trans
+    trans_matrix[:3, 3] = tran
     matrix = (
         numpy.linalg.inv(centroid_trans) @ trans_matrix @ rot_matrix @ centroid_trans
     )
@@ -85,8 +85,8 @@ if __name__ == "__main__":
     # std_devs = [[0.1,0.1,0.1,2,2,2],[0.5,0.5,0.5,5,5,5],[1,1,1,15,15,15]]
     # bounds = [[0,0.3,0,5],[0.3,1,5,10],[1,4,10,35]]
     # std_dev_global = [10,10,10,90,90,90]
-    bounds = [0.2,4,1,45]
-    global_bounds = [4,15,45,180]
+    bounds = [0.2,1.5,1,45]
+    global_bounds = [1.5,15,45,180]
     overlaps.sort(key=lambda x: x[2])
     overlaps = list(filter(lambda x: x[2] >= 0.1 and x[2] < 1, overlaps))
     min_overlap = min(overlaps, key=lambda x: x[2])[2]
