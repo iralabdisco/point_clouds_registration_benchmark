@@ -1,17 +1,17 @@
 Planetary
-    bounds = [0.5,4,1,35]
+    bounds = [0.5,4,1,45]
     global_bounds = [10,20,45,180]
 
 ETH
-    bounds = [0.2,4,1,35]
+    bounds = [0.2,4,1,45]
     global_bounds = [4,15,45,180]
 
 Kaist
-    bounds = [0.5,4,1,35]
+    bounds = [0.5, 4, 1, 45]
     global_bounds = [4,15,45,180]
 
 TUM
-    bounds = [0.05,1.5,1,35]
+    bounds = [0.05,1.5,1,45]
     global_bounds = [1.5,15,45,180]
 
 

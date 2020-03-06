@@ -2,7 +2,7 @@ import os, random, tqdm
 import overlap_fast, binascii
 
 base_id = binascii.crc32("kaist".encode())
-n_clouds = 200
+n_clouds = 400
 max_dist = 0.2
 files = os.listdir(".")
 cloud_files = []
@@ -36,7 +36,7 @@ with open("overlap.txt", "w") as out_file:
             # print(index)
             for other in tqdm.tqdm(cloud_files, desc=f'{cloud_file}', leave=False):
                 ov = 0
-                if(other in cloud_files[index+1:index+30]):
+                if(other in cloud_files[index+1:index+200]):
                     cloud2 = overlap_fast.open_pcd(other)
                     ov = overlap_fast.overlap(cloud1,cloud2,max_dist)
                 out_file.write(str(ov)+" ")
