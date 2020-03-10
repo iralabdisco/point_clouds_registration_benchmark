@@ -46,7 +46,7 @@ def random_transform(lower_t, upper_t, lower_angle, upper_angle):
 
 
 def pair_to_str(pair, scale, matrix):
-    return f"{pair[0]} {pair[1]} {pair[2]:.2f} {scale:.2f} " + " ".join(
+    return f"{pair[0]} {pair[1]} {pair[2]:.4f} {scale:.4f} " + " ".join(
         [str(x) for x in matrix[:3, :].flatten()]
     )
 
