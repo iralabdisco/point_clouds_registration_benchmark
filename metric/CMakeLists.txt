@@ -13,4 +13,4 @@ add_definitions(${PCL_DEFINITIONS})
 add_library(${PROJECT_NAME}_metric INTERFACE)
 target_include_directories(${PROJECT_NAME}_metric INTERFACE .)
 
-install(FILES metric.hpp DESTINATION include)
+install(FILES metric.hpp DESTINATION include/${PROJECT_NAME})

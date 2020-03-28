@@ -4,7 +4,7 @@
 #include <assert.h>
 
 #include "pcl/common/centroid.h"
-#include "pcl/common/geometry.h"
+#include "pcl/common/distances.h"
 #include "pcl/point_cloud.h"
 
 namespace point_cloud_registration_benchmark {
