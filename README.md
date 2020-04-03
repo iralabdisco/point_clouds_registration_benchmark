@@ -29,7 +29,6 @@ To configure the environment, run the script setup.py. This will download the po
   - pioneer_slam
   - pioneer_slam2
   - pioneer_slam3
-  - desk
   - long_office_household
 
 - kaist
