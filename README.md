@@ -27,7 +27,6 @@ To configure the environment, run the script setup.py. This will download the po
 
 - tum
   - pioneer_slam
-  - pioneer_slam2
   - pioneer_slam3
   - long_office_household
 
