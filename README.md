@@ -6,7 +6,9 @@ The goal of this project is to develop a benchmark for point clouds registration
 - the TUM Vision Groud RGBD datasets;
 - the KAIST Urban datasets.
 
-The benchmark aims at covering all the possible use cases of point clouds registration algorithms in robotics; this will allow a fair and objective comparison between different approaches. We provide a set of scripts to ease the setup of the testing environment and a set of registration problems (with ground truth) that cover the various degrees of initial misalignment and overlap. Before using the benchmark, please use read the corresponding paper and cite it in your work.
+The benchmark aims at covering all the possible use cases of point clouds registration algorithms in robotics; this will allow a fair and objective comparison between different approaches. We provide a set of scripts to ease the setup of the testing environment and a set of registration problems (with ground truth) that cover the various degrees of initial misalignment and overlap. Before using the benchmark, please read the corresponding paper and cite it in your work:
+
+***[Fontana, Simone, et al. "A Benchmark for Point Clouds Registration Algorithms." arXiv preprint arXiv:2003.12841 (2020)](https://arxiv.org/abs/2003.12841)***
 
 ## Benchmark structure
 To configure the environment, run the script setup.py. This will download the point clouds, convert them to a common format, and save them in the following directory tree:
