@@ -27,9 +27,7 @@ To configure the environment, run the script setup.py. This will download the po
 
 - tum
   - pioneer_slam
-  - pioneer_slam2
   - pioneer_slam3
-  - desk
   - long_office_household
 
 - kaist
@@ -59,7 +57,7 @@ There are two files for each sequence: one is relative to local registration pro
 
 The p2at_met folder contains also two other files, named `planetary_map_{global,local}.txt` that contain the registration problems for the "registration with respect to a map" use case.
     
-The devel folder contains scripts we used to calculate the overlaps and to generate the `_local.txt` and `_global.txt` files. You should not use them, however we keep it in the repository for documentation purposes.
+The devel folder contains scripts we used to calculate the overlaps and to generate the `_local.txt` and `_global.txt` files. You should not use them, however we keep them in the repository for documentation purposes.
     
  ## How to use the benchmark
 1. Download or clone this repository.
