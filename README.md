@@ -1,5 +1,4 @@
 # A benchmark for point clouds registration algorithms
-## [This benchmark is still under active development. We will release it by April 2020. Please DO NOT USE IT FOR THE MOMENT]
 The goal of this project is to develop a benchmark for point clouds registration algorithms. It is composed of the following publicly available datasets:
 - the ETH datasets;
 - the Canadian Planetary Emulation Terrain 3D Mapping datasets;
