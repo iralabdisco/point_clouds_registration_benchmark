@@ -13,7 +13,7 @@ def main():
     gdown.download(url, filename, quiet=False)
     with ZipFile(filename, 'r') as zip_obj:
         print("Extracting dataset")
-        zip_obj.extractall("urban05")
+        zip_obj.extractall()
     os.remove(filename)
 
 if __name__ == "__main__":
