@@ -45,8 +45,8 @@ def random_transform(lower_t, upper_t, lower_angle, upper_angle):
     return trans, rot
 
 
-def pair_to_str(pair, scale, matrix):
-    return f"{pair[0]} {pair[1]} {pair[2]:.4f} {scale:.4f} " + " ".join(
+def pair_to_str(pair, matrix):
+    return f"{pair[0]} {pair[1]} {pair[2]:.4f} " + " ".join(
         [str(x) for x in matrix[:3, :].flatten()]
     )
 
@@ -70,7 +70,7 @@ def generate_transformation(centroid, rot, tran):
 
 
 if __name__ == "__main__":
-    header = "id source target overlap scale t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12\n"
+    header = "id source target overlap t1 t2 t3 t4 t5 t6 t7 t8 t9 t10 t11 t12\n"
     out_file_local = open(sys.argv[1] + "_local.txt", "w")
     out_file_global = open(sys.argv[1] + "_global.txt", "w")
     cloud_folder = sys.argv[2]
@@ -85,10 +85,10 @@ if __name__ == "__main__":
     # std_devs = [[0.1,0.1,0.1,2,2,2],[0.5,0.5,0.5,5,5,5],[1,1,1,15,15,15]]
     # bounds = [[0,0.3,0,5],[0.3,1,5,10],[1,4,10,35]]
     # std_dev_global = [10,10,10,90,90,90]
-    bounds = [0.2,1.5,1,45]
+    bounds = [0,1,0,30]
     global_bounds = [1.5,15,45,180]
     overlaps.sort(key=lambda x: x[2])
-    overlaps = list(filter(lambda x: x[2] >= 0.1 and x[2] < 1, overlaps))
+    overlaps = list(filter(lambda x: x[2] >= 0.4 and x[2] < 1, overlaps))
     min_overlap = min(overlaps, key=lambda x: x[2])[2]
     max_overlap = max(overlaps, key=lambda x: x[2])[2]
     step = (max_overlap - min_overlap) / num_overlap_classes
@@ -117,28 +117,24 @@ if __name__ == "__main__":
             trans, rot = random_transform(*bounds)
             source_cloud = open3d.io.read_point_cloud(f"{cloud_folder}/{pair[0]}")
             centroid, covariance = source_cloud.compute_mean_and_covariance()
-            eigenvalues, _ = numpy.linalg.eig(covariance)
-            scale = numpy.prod(numpy.abs(eigenvalues))
             matrix = generate_transformation(centroid, rot, trans)
             out_file_local.write(
                 str(base_id)
                 + format(id, "0" + str(id_len))
                 + " "
-                + pair_to_str(pair, scale, matrix)
+                + pair_to_str(pair, matrix)
                 + "\n"
             )
             id = id + 1
         trans, rot = random_transform(*global_bounds)
         source_cloud = open3d.io.read_point_cloud(f"{cloud_folder}/{pair[0]}")
         centroid, covariance = source_cloud.compute_mean_and_covariance()
-        eigenvalues, _ = numpy.linalg.eig(covariance)
-        scale = numpy.prod(numpy.abs(eigenvalues))
         matrix = generate_transformation(centroid, rot, trans)
         out_file_global.write(
             str(base_id)
             + format(id, "0" + str(id_len))
             + " "
-            + pair_to_str(pair, scale, matrix)
+            + pair_to_str(pair, matrix)
             + "\n"
         )
         id = id + 1
