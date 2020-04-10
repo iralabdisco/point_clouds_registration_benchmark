@@ -1,9 +1,9 @@
 # A benchmark for point clouds registration algorithms
 The goal of this project is to develop a benchmark for point clouds registration algorithms. It is composed of the following publicly available datasets:
-- the ETH datasets;
-- the Canadian Planetary Emulation Terrain 3D Mapping datasets;
-- the TUM Vision Groud RGBD datasets;
-- the KAIST Urban datasets.
+- [the ETH datasets](https://projects.asl.ethz.ch/datasets/doku.php?id=laserregistration:laserregistration);
+- [the Canadian Planetary Emulation Terrain 3D Mapping datasets](http://asrl.utias.utoronto.ca/datasets/3dmap/index.html);
+- [the TUM Vision Groud RGBD datasets](https://vision.in.tum.de/data/datasets/rgbd-dataset);
+- [the KAIST Urban datasets](https://irap.kaist.ac.kr/dataset/).
 
 The benchmark aims at covering all the possible use cases of point clouds registration algorithms in robotics; this will allow a fair and objective comparison between different approaches. We provide a set of scripts to ease the setup of the testing environment and a set of registration problems (with ground truth) that cover the various degrees of initial misalignment and overlap. Before using the benchmark, please read the corresponding paper and cite it in your work:
 
