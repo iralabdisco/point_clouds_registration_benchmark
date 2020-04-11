@@ -74,7 +74,8 @@ The devel folder contains scripts we used to calculate the overlaps and to gener
     1. Load the source and target point clouds.
     2. Transform the source point cloud with the initial transformation.
     3. Align the point clouds with the algorithm to test.
-    4. Compare the aligned source point cloud with the original source point cloud, using our metric. You can use either our python script or the C++ library. We suggest to avoid coding the metric by yourself, since, for point clouds with large coordinates, the computation of the centroid is subject to numerical instability that could drammatically affect the result.
+    4. Compare the aligned source point cloud with the original source point cloud, using our metric. You can use either our python script or the C++ library. Both are contained in the `metric` folder. The C++ library, `metric.hpp`, can be either copied into your project or installed with `make install`. We suggest to avoid coding the metric by yourself, since, for point clouds with large coordinates, the computation of the centroid is subject to numerical instability that could drammatically affect the result.
+    
 
 ## The `devel` folder
 
