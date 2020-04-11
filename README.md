@@ -61,6 +61,12 @@ The p2at_met folder contains also two other files, named `planetary_map_{global,
 The devel folder contains scripts we used to calculate the overlaps and to generate the `_local.txt` and `_global.txt` files. You should not use them, however we keep them in the repository for documentation purposes.
     
  ## How to use the benchmark
+### Dependencies
+- [PCL](http://pointclouds.org/)
+- Python3
+- [gdown](https://pypi.org/project/gdown/)
+
+### Instructions
 1. Download or clone this repository.
 2. Execute the script `setup.py` to download and configure the testing environment.
 3. Each folder of the workspace contains a set of `_local.txt` and `_global.txt` files, one for each sequence. The sequences are contained in a subfolder with the same name.
