@@ -11,6 +11,9 @@ def main():
         zip_file = dataset[0]+'.zip'
         print("Downloading dataset %s" % dataset[0])
         ftp.retrbinary('RETR '+dataset[1], open(zip_file, 'wb').write)
+    ftp.quit()
+    for dataset in datasets:
+        zip_file = dataset[0]+'.zip'
         with ZipFile(zip_file, 'r') as zip_obj:
             print("Extracting dataset %s" % dataset[0])
             zip_obj.extractall(".")
