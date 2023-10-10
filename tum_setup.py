@@ -2,9 +2,9 @@ import gdown, os,re,requests
 from zipfile import ZipFile
 
 def main():
-    sequences = [["long_office_household","https://drive.google.com/uc?id=1Uy9aUyZbjW26-lZ1oyqOUxJ9tP7E-fWP"],
-        ["pioneer_slam","https://drive.google.com/uc?id=1ha3rxXewWrlCv6SPbpg21I8Wpl9v9fi1"],
-        ["pioneer_slam3","https://drive.google.com/uc?id=1L8FzuFf1Nc3hy6YfhHYM3qSUKmP_eMBG"]]
+    sequences = [["long_office_household","https://drive.google.com/uc?id=1Uy9aUyZbjW26-lZ1oyqOUxJ9tP7E-fWP&confirm=t"],
+        ["pioneer_slam","https://drive.google.com/uc?id=1ha3rxXewWrlCv6SPbpg21I8Wpl9v9fi1&confirm=t"],
+        ["pioneer_slam3","https://drive.google.com/uc?id=1L8FzuFf1Nc3hy6YfhHYM3qSUKmP_eMBG&confirm=t"]]
 
     for sequence in sequences:
         os.mkdir(sequence[0])

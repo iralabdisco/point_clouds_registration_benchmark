@@ -2,7 +2,7 @@ import gdown, os,re,requests
 from zipfile import ZipFile
 
 def main():
-    url = "https://drive.google.com/uc?id=1rm8XOroaLVPDwSAVZJk05aIVRTMvdoxF"
+    url = "https://drive.google.com/uc?id=1rm8XOroaLVPDwSAVZJk05aIVRTMvdoxF&confirm=t"
     filename = "urban05/kaist_urban05.zip"
     os.mkdir("urban05")
 
