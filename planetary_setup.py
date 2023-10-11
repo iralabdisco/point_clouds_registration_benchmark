@@ -38,7 +38,7 @@ def main():
         os.remove(zip_file)
     
     os.chdir("p2at_met")
-    gdown.download("https://drive.google.com/uc?id=1marTTFGjlDTb-MLj7pm5zV1u-0IS-xFc", "box_map.pcd", quiet=True)
+    gdown.download("https://drive.google.com/uc?id=1marTTFGjlDTb-MLj7pm5zV1u-0IS-xFc&confirm=t", "box_map.pcd", quiet=True)
     # req = requests.get("http://projects.ira.disco.unimib.it/public/pcr_benchmark/box_map.pcd")
     # with open("box_map.pcd", "wb") as archive:
     #     archive.write(req.content)
